@@ -1,28 +1,32 @@
 import {Model,DataTypes} from "sequelize";
 import { mysql } from "../Database/mysql.instance";
 
-export interface notesInterface extends Model{
+export interface userInterface extends Model{
 
     id:number,
-    title:string,
-    content:string
+    name:string,
+    email:string,
+    password:string
 }
 
-export const notes=mysql.define<notesInterface>(
-    'notes',
+export const users=mysql.define<userInterface>(
+    'users',
     {
         id:{
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true
         },
-        title:{
+       name:{
             type:DataTypes.STRING
         },
-        content:{
+        email:{
+            type:DataTypes.STRING
+        },
+        password:{
             type:DataTypes.STRING
         }
     }
 ,
-    {tableName:'notes',timestamps:false}  
+    {tableName:'user',timestamps:false}  
 )
